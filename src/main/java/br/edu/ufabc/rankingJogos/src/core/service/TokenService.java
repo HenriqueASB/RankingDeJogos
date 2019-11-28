@@ -5,12 +5,13 @@ import java.util.Date;
 
 import org.springframework.stereotype.Service;
 
+import br.edu.ufabc.rankingJogos.src.core.model.UserToken;
 import br.edu.ufabc.rankingJogos.src.core.model.Usuario;
 
 @Service
 public class TokenService {
 	
-	public String geraToken(Usuario usuario) {
+	public UserToken geraToken(Usuario usuario) {
 		Date now = new Date();
 		String info = usuario.getNome()+"|"+now.getTime()+"|"+usuario.getSenha();
 		byte[] encode = Base64.getEncoder().encode(info.getBytes());
@@ -20,8 +21,8 @@ public class TokenService {
 		System.out.println("info   "+info);
 		System.out.println("toke   "+token);
 		System.out.println("teste   "+teste);
-		
-		return token;
+		UserToken t = new UserToken(token,token,1000);
+		return t;
 		
 	}
 

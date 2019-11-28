@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import br.edu.ufabc.rankingJogos.src.core.model.UserToken;
 import br.edu.ufabc.rankingJogos.src.core.model.Usuario;
 import br.edu.ufabc.rankingJogos.src.core.port.UserControllerPort;
 import br.edu.ufabc.rankingJogos.src.core.service.UsuarioService;
@@ -23,8 +25,8 @@ public class UserController implements UserControllerPort {
 
 	@Override
 	@PostMapping("/login")
-	public String login(Usuario request) {
-		String token;
+	public UserToken login(Usuario request) {
+		UserToken token;
 		token  = service.login(request);
 		return token;
 	}
