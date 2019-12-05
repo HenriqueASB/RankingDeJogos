@@ -22,14 +22,14 @@ public class AvaliacaoRepository implements AvaliacaoRepositoryPort {
     public int save(Avaliacao avaliacao) {
         return jdbcTemplate.update(
                 "insert into avaliacao (user_id, jogo_id, nota) values(?,?,?)",
-                avaliacao.getId(),avaliacao.getJogo_id(),avaliacao.getNota());
+                avaliacao.getUser_id(),avaliacao.getJogo_id(),avaliacao.getNota());
     }
 
     @Override
     public int update(Avaliacao avaliacao) {
         return jdbcTemplate.update(
                 "update avaliacao set user_id = ? , jogo_id = ? , nota = ? where id = ?",
-                avaliacao.getId(),avaliacao.getJogo_id(),avaliacao.getNota());
+                avaliacao.getUser_id(),avaliacao.getJogo_id(),avaliacao.getNota());
     }
 
     @Override
@@ -48,7 +48,7 @@ public class AvaliacaoRepository implements AvaliacaoRepositoryPort {
 	                                rs.getInt("id"),
 	                                rs.getInt("user_id"),
 	                                rs.getInt("jogo_id"),
-                                        rs.getFloat("nota")
+                                        rs.getInt("nota")
 	                        )
 	        );
     }
@@ -62,7 +62,7 @@ public class AvaliacaoRepository implements AvaliacaoRepositoryPort {
                             rs.getInt("id"),
                             rs.getInt("user_id"),
                             rs.getInt("jogo_id"),
-                            rs.getFloat("nota")
+                            rs.getInt("nota")
                 )
         );
     }
@@ -76,7 +76,7 @@ public class AvaliacaoRepository implements AvaliacaoRepositoryPort {
                             rs.getInt("id"),
                             rs.getInt("user_id"),
                             rs.getInt("jogo_id"),
-                            rs.getFloat("nota")
+                            rs.getInt("nota")
                 )
         );
     }

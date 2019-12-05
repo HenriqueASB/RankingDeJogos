@@ -10,30 +10,18 @@ package br.edu.ufabc.rankingJogos.src.core.model;
  * @author Pichau
  */
 public class Avaliacao {
-    
-    private int id;
     private int user_id;
     private int jogo_id;
-    private float nota;
+    private int nota;
 
     public Avaliacao() {
         super();
     }
 
-    public Avaliacao(int id, int user_id, int jogo_id, float nota) {
-        this.id = id;
+    public Avaliacao(int id, int user_id, int jogo_id, int nota) {
         this.user_id = user_id;
         this.jogo_id = jogo_id;
         this.nota = nota;
-    }
-    
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public int getUser_id() {
@@ -52,11 +40,11 @@ public class Avaliacao {
         this.jogo_id = jogo_id;
     }
 
-    public float getNota() {
+    public int getNota() {
         return nota;
     }
 
-    public void setNota(float nota) {
+    public void setNota(int nota) {
         this.nota = nota;
     }
     
