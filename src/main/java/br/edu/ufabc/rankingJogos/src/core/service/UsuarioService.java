@@ -16,12 +16,14 @@ public class UsuarioService {
 	UsuarioRepositoryPort usuarioRespository;
 	@Autowired
 	TokenService token;
+
 	
 	public int create(Usuario usuario) {
 		int res;
 		res = usuarioRespository.save(usuario);
 		return res;
 	}
+	
 	
 	public UserToken login(Usuario usuario) {
 		Usuario[] user = new Usuario[1];
