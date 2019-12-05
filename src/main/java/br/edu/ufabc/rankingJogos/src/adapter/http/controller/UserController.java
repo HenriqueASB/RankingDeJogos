@@ -9,6 +9,10 @@ import br.edu.ufabc.rankingJogos.src.core.model.UserToken;
 import br.edu.ufabc.rankingJogos.src.core.model.Usuario;
 import br.edu.ufabc.rankingJogos.src.core.port.UserControllerPort;
 import br.edu.ufabc.rankingJogos.src.core.service.UsuarioService;
+import java.util.List;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
 @RequestMapping("/user")
@@ -19,16 +23,44 @@ public class UserController implements UserControllerPort {
 
 	@Override
 	@PostMapping("/create")
-	public void create(Usuario request) {
-		service.create(request);
+	public void create(Usuario usuario) {
+		service.create(usuario);
 	}
 
 	@Override
 	@PostMapping("/login")
-	public UserToken login(Usuario request) {
-		UserToken token;
-		token  = service.login(request);
+	public UserToken login(Usuario usuario) {
+		UserToken token = service.login(usuario);
 		return token;
 	}
-
+        
+        @Override
+        @PutMapping
+        public int update(Usuario usuario) {
+            return service.update(usuario);
+        }
+        
+        @Override
+        @DeleteMapping
+        public int delete(Long id) {
+            return service.delete(id);
+        }
+        
+        @Override
+        @GetMapping
+        public List<Usuario> readAll() {
+            return service.readAll();
+        }
+        
+        @Override
+        @GetMapping("/{id}")
+        public Usuario readById(Long id) {
+            return service.readById(id);
+        }
+        
+        @Override
+        @GetMapping("/email")
+        public List<Usuario> readByEmail(String email) {
+            return service.readByEmail(email);
+        }
 }

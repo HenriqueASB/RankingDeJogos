@@ -18,8 +18,7 @@ public class UsuarioRepository implements UsuarioRepositoryPort {
 	
 	@Override
 	public int count() {
-		// TODO Auto-generated method stub
-		return 0;
+		return jdbcTemplate.queryForObject("SELECT count(id) FROM ranking.user", Integer.class);
 	}
 
 	@Override
@@ -28,33 +27,54 @@ public class UsuarioRepository implements UsuarioRepositoryPort {
 		String senha = new String(encode);
 		
 		return jdbcTemplate.update(
-                "insert into user (nome, email, senha) values(?,?,?)",
-                usuario.getNome(),usuario.getEmail(),senha);
+                "insert into user (nome, email, senha, urlFoto) values(?,?,?,?)",
+                usuario.getNome(),usuario.getEmail(),senha, usuario.getUrlFoto());
 		
 	}
 
 	@Override
 	public int update(Usuario usuario) {
-		// TODO Auto-generated method stub
-		return 0;
+            return jdbcTemplate.update(
+            "update user set nome = ? , email = ? , senha = ? , urlFoto = ? where id = ?",
+            usuario.getNome(), usuario.getEmail(),usuario.getSenha(),usuario.getUrlFoto(), usuario.getId());
 	}
 
 	@Override
 	public int deleteById(Long id) {
-		// TODO Auto-generated method stub
-		return 0;
+            return jdbcTemplate.update(
+                "delete from jogo where id = ?",
+                id);
 	}
 
 	@Override
 	public List<Usuario> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return jdbcTemplate.query(
+	                "select * from user",
+	                (rs, rowNum) ->
+	                        new Usuario(
+                                    rs.getInt("id"),
+                                    rs.getString("nome"),
+                                    rs.getString("email"),
+                                    rs.getString("senha"),
+                                    rs.getString("urlFoto")
+	                        )
+	        );
 	}
 
 	@Override
 	public Usuario findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return jdbcTemplate.queryForObject(
+                "select * from user where id = ?",
+                    new Object[]{id},
+                    (rs, rowNum) ->
+                            new Usuario(
+                                rs.getInt("id"),
+                                rs.getString("nome"),
+                                rs.getString("email"),
+                                rs.getString("senha"),
+                                rs.getString("urlFoto")
+                    )
+        );
 	}
 
 	@Override
@@ -67,7 +87,8 @@ public class UsuarioRepository implements UsuarioRepositoryPort {
                                 rs.getInt("id"),
                                 rs.getString("nome"),
                                 rs.getString("email"),
-                                rs.getString("senha")
+                                rs.getString("senha"),
+                                rs.getString("urlFoto")
                                 )
         );
 	}

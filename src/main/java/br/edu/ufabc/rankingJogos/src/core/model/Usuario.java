@@ -2,16 +2,18 @@ package br.edu.ufabc.rankingJogos.src.core.model;
 
 public class Usuario {
 	
-	private int id;
+    private int id;
     private String nome;
     private String email;
     private String senha;
+    private String urlFoto;
     
-	public Usuario(int id, String nome, String email, String senha) {
+	public Usuario(int id, String nome, String email, String senha, String urlFoto) {
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
 		this.senha = senha;
+                this.urlFoto = urlFoto;
 	}
 	public Usuario() {
 	}
@@ -23,6 +25,9 @@ public class Usuario {
 	}
 	public String getNome() {
 		return nome;
+	}
+        public String getUrlFoto() {
+		return urlFoto;
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
@@ -39,6 +44,8 @@ public class Usuario {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-
+        public void setUrlFoto(String urlFoto) {
+		this.urlFoto = urlFoto;
+	}
 
 }
