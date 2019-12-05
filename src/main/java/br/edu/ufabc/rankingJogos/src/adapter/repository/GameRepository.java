@@ -1,20 +1,15 @@
-/**
- * 
- */
+
 package br.edu.ufabc.rankingJogos.src.adapter.repository;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Service;
 
 import br.edu.ufabc.rankingJogos.src.core.model.Game;
 import br.edu.ufabc.rankingJogos.src.core.port.repository.GameRepositoryPort;
-
-/**
- * @author henri
- *
- */
+@Service
 public class GameRepository implements GameRepositoryPort {
 
 	@Autowired
@@ -22,13 +17,10 @@ public class GameRepository implements GameRepositoryPort {
 	
 	@Override
 	public int count() {
-		// TODO Auto-generated method stub
-		return 0;
+		return jdbcTemplate.queryForObject("SELECT count(id) FROM ranking.jogo", Integer.class);
 	}
 
-	/* (non-Javadoc)
-	 * @see br.edu.ufabc.rankingJogos.src.core.port.repository.GameRepositoryPort#save(br.edu.ufabc.rankingJogos.src.core.model.Game)
-	 */
+
 	@Override
 	public int save(Game game) {
 		return jdbcTemplate.update(
@@ -37,49 +29,70 @@ public class GameRepository implements GameRepositoryPort {
 
 	}
 
-	/* (non-Javadoc)
-	 * @see br.edu.ufabc.rankingJogos.src.core.port.repository.GameRepositoryPort#update(br.edu.ufabc.rankingJogos.src.core.model.Game)
-	 */
 	@Override
 	public int update(Game game) {
-		// TODO Auto-generated method stub
-		return 0;
+		return jdbcTemplate.update(
+                "update jogo set titulo = ? , empresa_id = ?  , genero_id = ? , sinopse = ? , urlFoto = ? where id = ?",
+                game.getTitulo(),game.getEmpresa_id(),game.getGenero_id(),game.getSinopse(),game.getUrlFoto(), game.getId());
 	}
 
-	/* (non-Javadoc)
-	 * @see br.edu.ufabc.rankingJogos.src.core.port.repository.GameRepositoryPort#deleteById(java.lang.Long)
-	 */
+
 	@Override
 	public int deleteById(Long id) {
-		// TODO Auto-generated method stub
-		return 0;
+		 return jdbcTemplate.update(
+	                "delete from jogo where id = ?",
+	                id);
 	}
 
-	/* (non-Javadoc)
-	 * @see br.edu.ufabc.rankingJogos.src.core.port.repository.GameRepositoryPort#findAll()
-	 */
 	@Override
 	public List<Game> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		 return jdbcTemplate.query(
+	                "select * from jogo",
+	                (rs, rowNum) ->
+	                        new Game(
+	                                rs.getInt("id"),
+	                                rs.getString("titulo"),
+	                                rs.getInt("empresa_id"),
+	                                rs.getInt("genero_id"),
+	                                rs.getString("sinopse"),
+	                                rs.getString("urlFoto")
+	                        )
+	        );
 	}
 
-	/* (non-Javadoc)
-	 * @see br.edu.ufabc.rankingJogos.src.core.port.repository.GameRepositoryPort#findById(java.lang.Long)
-	 */
+
 	@Override
 	public Game findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return jdbcTemplate.queryForObject(
+                "select * from jogo where id = ?",
+                new Object[]{id},
+                (rs, rowNum) ->
+                	new Game(
+                        rs.getInt("id"),
+                        rs.getString("titulo"),
+                        rs.getInt("empresa_id"),
+                        rs.getInt("genero_id"),
+                        rs.getString("sinopse"),
+                        rs.getString("urlFoto")
+                )
+        );
 	}
 
-	/* (non-Javadoc)
-	 * @see br.edu.ufabc.rankingJogos.src.core.port.repository.GameRepositoryPort#findByTitulo(java.lang.String)
-	 */
 	@Override
 	public List<Game> findByTitulo(String titulo) {
-		// TODO Auto-generated method stub
-		return null;
+		return jdbcTemplate.query(
+                "select * from jogo where titulo Like ?",
+                new Object[]{titulo},
+                (rs, rowNum) ->
+                	new Game(
+                        rs.getInt("id"),
+                        rs.getString("titulo"),
+                        rs.getInt("empresa_id"),
+                        rs.getInt("genero_id"),
+                        rs.getString("sinopse"),
+                        rs.getString("urlFoto")
+                )
+        );
 	}
 
 }
