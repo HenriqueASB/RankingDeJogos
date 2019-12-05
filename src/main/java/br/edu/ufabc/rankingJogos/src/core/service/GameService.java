@@ -37,10 +37,4 @@ public class GameService {
 	public int delete(long id) {
 		return gameRepository.deleteById(id);
 	}
-	
-	
-	
-	
-	
-
 }

@@ -5,7 +5,7 @@ import java.util.List;
 import br.edu.ufabc.rankingJogos.src.core.model.Game;
 
 public interface GameRepositoryPort {
-	int count();
+    int count();
 
     int save(Game game);
 
