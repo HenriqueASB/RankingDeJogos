@@ -25,5 +25,7 @@ public interface AvaliacaoRepositoryPort {
     List<Avaliacao> findByUser_Id(int id);
     
     List<Avaliacao> findByJogo_Id(int id);
+
+    public int nota(int jogo_id);
     
 }

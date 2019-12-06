@@ -80,4 +80,9 @@ public class AvaliacaoRepository implements AvaliacaoRepositoryPort {
                 )
         );
     }
+  
+    //ERROOOOOOOOOOOOOOOOO <<<<<<<<<<<<<<<
+    public int nota(int jogo_id){
+        return jdbcTemplate.queryForObject("select AVG(nota) FROM ranking.avaliacao where jogo_id = ?", id_jogo);
+    }
 }

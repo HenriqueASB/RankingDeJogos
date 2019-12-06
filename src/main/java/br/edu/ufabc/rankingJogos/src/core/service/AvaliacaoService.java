@@ -37,4 +37,8 @@ public class AvaliacaoService {
     public int delete(int id){
         return avaliacaoRepository.delete(id);
     }
+    
+    public int calculaNota(int jogo_id){
+        return avaliacaoRepository.nota(jogo_id);
+    }
 }
