@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.edu.ufabc.rankingJogos.src.core.model.Game;
+import br.edu.ufabc.rankingJogos.src.core.model.Genero;
 import br.edu.ufabc.rankingJogos.src.core.port.repository.GameRepositoryPort;
 
 @Service
@@ -37,4 +38,5 @@ public class GameService {
 	public int delete(long id) {
 		return gameRepository.deleteById(id);
 	}
+
 }

@@ -13,11 +13,11 @@ public interface ConsoleRepositoryPort {
 
     int update(Console console);
 
-    int deleteById(Long id);
+    int deleteById(int id);
 
     List<Console> findAll();
 
-    Console findById(Long id);
+    Console findById(int id);
     
-    List<Console> findByConsole(String console);
+    List<Console> findByNome(String nome);
 }

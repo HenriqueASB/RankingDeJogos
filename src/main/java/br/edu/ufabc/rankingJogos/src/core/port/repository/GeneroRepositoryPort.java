@@ -12,11 +12,11 @@ public interface GeneroRepositoryPort {
 
     int update(Genero genero);
 
-    int deleteById(Long id);
+    int deleteById(int id);
 
     List<Genero> findAll();
 
-    Genero findById(Long id);
+    Genero findById(int id);
     
     List<Genero> findByGenero(String genero);
 }

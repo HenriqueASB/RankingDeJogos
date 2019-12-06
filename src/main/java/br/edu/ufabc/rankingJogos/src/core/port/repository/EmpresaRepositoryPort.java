@@ -13,11 +13,11 @@ public interface EmpresaRepositoryPort {
 
     int update(Empresa empresa);
 
-    int deleteById(Long id);
+    int deleteById(int id);
 
     List<Empresa> findAll();
 
-    Empresa findById(Long id);
+    Empresa findById(int id);
     
-    List<Empresa> findByEmpresa(String empresa);
+    List<Empresa> findByNome(String Nome);
 }
