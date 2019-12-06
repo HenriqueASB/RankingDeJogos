@@ -18,6 +18,7 @@ public interface GameRepositoryPort {
     Game findById(Long id);
     
     List<Game> findByTitulo(String titulo);
+    
 }
 
 

@@ -33,13 +33,13 @@ public class ConsoleController implements ConsoleControllerPort {
     }
 
     @Override
-    @GetMapping
+    @GetMapping("/nome")
     public List<Console> readByNome(String nome) {
         return service.readByNome(nome);
     }
 
     @Override
-    @GetMapping
+    @GetMapping("/{id}")
     public Console readById(int id) {
         return service.readById(id);
     }

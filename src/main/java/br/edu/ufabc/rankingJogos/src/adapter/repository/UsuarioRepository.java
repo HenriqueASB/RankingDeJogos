@@ -34,9 +34,11 @@ public class UsuarioRepository implements UsuarioRepositoryPort {
 
 	@Override
 	public int update(Usuario usuario) {
+		byte[] encode = Base64.getEncoder().encode(usuario.getSenha().getBytes());
+		String senha = new String(encode);
             return jdbcTemplate.update(
             "update user set nome = ? , email = ? , senha = ? , urlFoto = ? where id = ?",
-            usuario.getNome(), usuario.getEmail(),usuario.getSenha(),usuario.getUrlFoto(), usuario.getId());
+            usuario.getNome(), usuario.getEmail(),senha,usuario.getUrlFoto(), usuario.getId());
 	}
 
 	@Override

@@ -20,4 +20,7 @@ public interface ConsoleRepositoryPort {
     Console findById(int id);
     
     List<Console> findByNome(String nome);
+    
+    List<Console> findByGameId(int id);
+
 }

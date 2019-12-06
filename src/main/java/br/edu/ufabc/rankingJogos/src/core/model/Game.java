@@ -1,27 +1,30 @@
 package br.edu.ufabc.rankingJogos.src.core.model;
 
+import java.util.Arrays;
+import java.util.Objects;
+
 public class Game {
+
 	
 	public Game() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Game(int id, String titulo, int empresa_id, int genero_id[], 
-                    int console_id[], String sinopse, String urlFoto) {
+	public Game(int id, String titulo, Empresa empresa,Genero[] genero,Console[] console, String sinopse, String urlFoto) {
 		super();
 		this.id = id;
 		this.titulo = titulo;
-		this.empresa_id = empresa_id;
-		this.genero_id = genero_id;
-                this.console_id = console_id;
+		this.empresa = empresa;
+		this.genero = Arrays.stream(genero).filter(Objects::nonNull).toArray(Genero[]::new);
+		this.console =Arrays.stream(console).filter(Objects::nonNull).toArray(Console[]::new);
 		this.sinopse = sinopse;
 		this.urlFoto = urlFoto;
 	}
 	private int id;
 	private String titulo;
-	private int empresa_id;
-	private int genero_id[];
-        private int console_id[];
+	private Empresa empresa;
+	private Genero genero[];
+    private Console console[];
 	private String sinopse;
 	private String urlFoto;
 	
@@ -37,23 +40,23 @@ public class Game {
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
-	public int getEmpresa_id() {
-		return empresa_id;
+	public Empresa getEmpresa() {
+		return empresa;
 	}
-	public void setEmpresa_id(int empresa_id) {
-		this.empresa_id = empresa_id;
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
 	}
-	public int[] getGenero_id() {
-		return genero_id;
+	public Genero[] getGenero() {
+		return genero;
 	}
-	public void setGenero_id(int genero_id[]) {
-		this.genero_id = genero_id;
+	public void setGenero(Genero genero[]) {
+		this.genero = genero;
 	}
-        public int[] getConsole_id() {
-		return console_id;
+    public Console[] getConsole() {
+		return console;
 	}
-	public void setConsole_id(int console_id[]) {
-		this.console_id = console_id;
+	public void setConsole_id(Console console[]) {
+		this.console = console;
 	}
 	public String getSinopse() {
 		return sinopse;

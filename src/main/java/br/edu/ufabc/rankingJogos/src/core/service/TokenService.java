@@ -16,14 +16,14 @@ public class TokenService {
 		String info = usuario.getNome()+"|"+now.getTime()+"|"+usuario.getSenha();
 		byte[] encode = Base64.getEncoder().encode(info.getBytes());
 		String token = new String(encode);
-		byte[] decode = Base64.getDecoder().decode(token.getBytes());
-		String teste = new String(decode);
-		System.out.println("info   "+info);
-		System.out.println("toke   "+token);
-		System.out.println("teste   "+teste);
-		UserToken t = new UserToken(token,token,1000);
+		String refreshInfo = usuario.getNome()+"|refresh|"+usuario.getSenha();
+		byte[] refreshEncode = Base64.getEncoder().encode(refreshInfo.getBytes());
+		String refreshToken = new String(refreshEncode);
+		UserToken t = new UserToken(token,refreshToken,1000);
 		return t;
 		
 	}
+	
+	
 
 }

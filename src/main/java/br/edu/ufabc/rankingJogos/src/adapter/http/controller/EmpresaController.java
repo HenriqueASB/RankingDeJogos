@@ -33,13 +33,13 @@ public class EmpresaController implements EmpresaControllerPort{
     }
 
     @Override
-    @GetMapping
+    @GetMapping("/nome")
     public List<Empresa> readByNome(String nome) {
         return service.readByNome(nome);
     }
 
     @Override
-    @GetMapping
+    @GetMapping("/{id}")
     public Empresa readById(int id) {
         return service.readById(id);
     }

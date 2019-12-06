@@ -33,13 +33,13 @@ public class GeneroController implements GeneroControllerPort{
     }
 
     @Override
-    @GetMapping
+    @GetMapping("/genero")
     public List<Genero> readByGenero(String genero) {
         return service.readByGenero(genero);
     }
 
     @Override
-    @GetMapping
+    @GetMapping("/{id}")
     public Genero readById(int id) {
         return service.readById(id);
     }

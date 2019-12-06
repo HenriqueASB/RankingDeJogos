@@ -23,8 +23,9 @@ public class UserController implements UserControllerPort {
 
 	@Override
 	@PostMapping("/create")
-	public void create(Usuario usuario) {
+	public Usuario create(Usuario usuario) {
 		service.create(usuario);
+		return service.readByEmail(usuario.getEmail()).get(0); 
 	}
 
 	@Override

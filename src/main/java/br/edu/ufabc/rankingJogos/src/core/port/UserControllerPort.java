@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface UserControllerPort {
 	
-	public void create(@RequestBody Usuario request);
+	public Usuario create(@RequestBody Usuario request);
 	
 	public UserToken login(@RequestBody Usuario request);
         

@@ -19,4 +19,6 @@ public interface GeneroRepositoryPort {
     Genero findById(int id);
     
     List<Genero> findByGenero(String genero);
+    List<Genero> findByGameId(int id);
+
 }

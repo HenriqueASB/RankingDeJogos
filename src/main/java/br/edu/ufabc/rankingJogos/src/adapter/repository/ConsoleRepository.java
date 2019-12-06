@@ -83,5 +83,25 @@ public class ConsoleRepository implements ConsoleRepositoryPort{
                 )
         );
     }
+
+	@Override
+	public List<Console> findByGameId(int id) {
+		return jdbcTemplate.query(
+                "select distinct c.* from jogo as j \r\n" + 
+                "join jogo_console as jc on j.id = jc.jogo_id \r\n" + 
+                "join console as c on jc.console_id = c.id \r\n" + 
+                "join jogo_genero as jg on jg.jogo_id = j.id \r\n" + 
+                "join genero as g on g.id = jg.genero_id\r\n" + 
+                "where j.id = ?;",
+                new Object[]{id},
+                (rs, rowNum) ->
+                	new Console(
+                        rs.getInt("id"),
+                        rs.getString("nome"),
+                        rs.getString("fabricante"),
+                        rs.getString("ano")
+                    )
+            );
+	}
     
 }
