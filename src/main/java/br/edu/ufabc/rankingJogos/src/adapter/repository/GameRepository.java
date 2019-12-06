@@ -23,12 +23,26 @@ public class GameRepository implements GameRepositoryPort {
 
 	@Override
 	public int save(Game game) {
-		return jdbcTemplate.update(
-                "insert into jogo (titulo, empresa_id, genero_id,sinopse,urlFoto) values(?,?,?,?,?)",
-                game.getTitulo(),game.getEmpresa_id(),game.getGenero_id(),game.getSinopse(),game.getUrlFoto());
-
+		jdbcTemplate.update(
+                "insert into jogo (titulo, empresa_id, sinopse, urlFoto) values(?,?,?,?,?)",
+                game.getTitulo(),game.getEmpresa_id(),game.getSinopse(),game.getUrlFoto());
+                
+                for (int i = 0; i < game.getGenero_id().length; i++) {
+                    jdbcTemplate.update(
+                    "insert into jogo_genero (jogo_id, genero_id) values(?,?)",
+                    game.getId(),game.getGenero_id()[i]);
+                }
+                
+                for (int i = 0; i < game.getConsole_id().length; i++) {
+                    jdbcTemplate.update(
+                    "insert into jogo_console (jogo_id, console_id) values(?,?)",
+                    game.getId(),game.getConsole_id()[i]);
+                }
+                
+                return 0;
 	}
 
+        
 	@Override
 	public int update(Game game) {
 		return jdbcTemplate.update(

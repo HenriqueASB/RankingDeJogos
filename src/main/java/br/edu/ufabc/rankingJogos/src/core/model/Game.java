@@ -6,19 +6,22 @@ public class Game {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Game(int id, String titulo, int empresa_id, int genero_id, String sinopse, String urlFoto) {
+	public Game(int id, String titulo, int empresa_id, int genero_id[], 
+                    int console_id[], String sinopse, String urlFoto) {
 		super();
 		this.id = id;
 		this.titulo = titulo;
 		this.empresa_id = empresa_id;
 		this.genero_id = genero_id;
+                this.console_id = console_id;
 		this.sinopse = sinopse;
 		this.urlFoto = urlFoto;
 	}
 	private int id;
 	private String titulo;
 	private int empresa_id;
-	private int genero_id ;
+	private int genero_id[];
+        private int console_id[];
 	private String sinopse;
 	private String urlFoto;
 	
@@ -40,11 +43,17 @@ public class Game {
 	public void setEmpresa_id(int empresa_id) {
 		this.empresa_id = empresa_id;
 	}
-	public int getGenero_id() {
+	public int[] getGenero_id() {
 		return genero_id;
 	}
-	public void setGenero_id(int genero_id) {
+	public void setGenero_id(int genero_id[]) {
 		this.genero_id = genero_id;
+	}
+        public int[] getConsole_id() {
+		return console_id;
+	}
+	public void setConsole_id(int console_id[]) {
+		this.console_id = console_id;
 	}
 	public String getSinopse() {
 		return sinopse;
