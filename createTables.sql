@@ -47,7 +47,6 @@ CREATE TABLE jogo (
 	id int(6) unsigned zerofill NOT NULL AUTO_INCREMENT,
 	titulo varchar(50) NOT NULL,
 	empresa_id int(4) unsigned zerofill NOT NULL,
-	genero_id int(2) unsigned zerofill NOT NULL,
 	sinopse varchar(255) NOT NULL,
 	urlFoto varchar(100) DEFAULT NULL,
 	PRIMARY KEY (id),

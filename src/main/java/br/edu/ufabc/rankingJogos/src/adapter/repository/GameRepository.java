@@ -38,7 +38,7 @@ public class GameRepository implements GameRepositoryPort {
 	@Override
 	public int save(Game game) {
 		jdbcTemplate.update(
-                "insert into jogo (titulo, empresa_id, sinopse, urlFoto) values(?,?,?,?,?)",
+                "insert into jogo (titulo, empresa_id, sinopse, urlFoto) values(?,?,?,?)",
                 game.getTitulo(),game.getEmpresa().getId(),game.getSinopse(),game.getUrlFoto());
                 
                 for (int i = 0; i < game.getGenero().length; i++) {

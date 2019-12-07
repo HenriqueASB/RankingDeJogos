@@ -19,7 +19,7 @@ public class TokenService {
 		String refreshInfo = usuario.getNome()+"|refresh|"+usuario.getSenha();
 		byte[] refreshEncode = Base64.getEncoder().encode(refreshInfo.getBytes());
 		String refreshToken = new String(refreshEncode);
-		UserToken t = new UserToken(token,refreshToken,1000);
+		UserToken t = new UserToken(token,refreshToken,600000);
 		return t;
 		
 	}
