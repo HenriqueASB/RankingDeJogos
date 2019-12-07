@@ -1,0 +1,26 @@
+﻿{
+	"titulo":"Super Isidro bros"
+	"empresa_id":10
+	"genero_id":[8]
+	"console_id":[8]
+	"sinopse":"Fala Velhinho, cadê meu cogumelo?"
+	"urlFoto":"assets/images/jogos/mario.jpg"
+}
+
+{
+	"titulo":"Isidro: The hedgehog"
+	"empresa_id":12
+	"genero_id":[8]
+	"console_id":[7]
+	"sinopse":"Fala Robotnik, cadê minha argola?"
+	"urlFoto":"assets/images/jogos/sonic.jpg"
+}
+
+{
+	"titulo":"Star Wars: O Retorno de Isidro"
+	"empresa_id":"7"
+	"genero_id":[4]
+	"console_id":[18]
+	"sinopse":"Fala Yodinha, cadê meu sabre?"
+	"urlFoto":"assets/images/jogos/star.jpg"
+}
