@@ -10,7 +10,7 @@ public class Game {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Game(int id, String titulo, Empresa empresa,Genero[] genero,Console[] console, String sinopse, String urlFoto) {
+	public Game(int id, String titulo, Empresa empresa,Genero[] genero,Console[] console, String sinopse, String urlFoto, Double nota) {
 		super();
 		this.id = id;
 		this.titulo = titulo;
@@ -19,6 +19,7 @@ public class Game {
 		this.console =Arrays.stream(console).filter(Objects::nonNull).toArray(Console[]::new);
 		this.sinopse = sinopse;
 		this.urlFoto = urlFoto;
+		this.nota = nota;
 	}
 	private int id;
 	private String titulo;
@@ -27,6 +28,7 @@ public class Game {
     private Console console[];
 	private String sinopse;
 	private String urlFoto;
+	private Double nota;
 	
 	public int getId() {
 		return id;
@@ -69,6 +71,12 @@ public class Game {
 	}
 	public void setUrlFoto(String urlFoto) {
 		this.urlFoto = urlFoto;
+	}
+	public Double getNota() {
+		return nota;
+	}
+	public void setNota(Double nota) {
+		this.nota = nota;
 	}
 	
 	

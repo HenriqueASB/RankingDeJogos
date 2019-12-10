@@ -12,13 +12,13 @@ package br.edu.ufabc.rankingJogos.src.core.model;
 public class Avaliacao {
     private int user_id;
     private int jogo_id;
-    private int nota;
+    private float nota;
 
     public Avaliacao() {
         super();
     }
 
-    public Avaliacao(int id, int user_id, int jogo_id, int nota) {
+    public Avaliacao(int id, int user_id, int jogo_id, float nota) {
         this.user_id = user_id;
         this.jogo_id = jogo_id;
         this.nota = nota;
@@ -40,11 +40,11 @@ public class Avaliacao {
         this.jogo_id = jogo_id;
     }
 
-    public int getNota() {
+    public float getNota() {
         return nota;
     }
 
-    public void setNota(int nota) {
+    public void setNota(float nota) {
         this.nota = nota;
     }
     

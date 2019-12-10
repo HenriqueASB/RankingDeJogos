@@ -18,4 +18,6 @@ public interface AvaliacaoControllerPort {
     public int update(@RequestBody Avaliacao avaliacao);
 
     public int delete(@PathVariable int id);
+    
+    public Double calculaNota(@PathVariable int jogo_id);
 }

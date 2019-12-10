@@ -12,7 +12,7 @@ public interface UserControllerPort {
 	
 	public UserToken login(@RequestBody Usuario request);
         
-        public int update(Usuario usuario);
+        public int update(@RequestBody Usuario usuario);
         
         public int delete(Long id);
         

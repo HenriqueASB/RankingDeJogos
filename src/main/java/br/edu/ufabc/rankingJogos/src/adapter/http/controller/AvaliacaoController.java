@@ -55,4 +55,10 @@ public class AvaliacaoController implements AvaliacaoControllerPort{
     public int delete(int id) {
         return service.delete(id);
     }
+
+	@Override
+	@GetMapping("/jogo/{jogo_id}")
+	public Double calculaNota(int jogo_id) {
+		return service.calculaNota(jogo_id);
+	}
 }

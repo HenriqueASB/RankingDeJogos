@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import br.edu.ufabc.rankingJogos.src.core.model.Console;
 import br.edu.ufabc.rankingJogos.src.core.model.Game;
 import br.edu.ufabc.rankingJogos.src.core.model.Genero;
+import br.edu.ufabc.rankingJogos.src.core.port.repository.AvaliacaoRepositoryPort;
 import br.edu.ufabc.rankingJogos.src.core.port.repository.ConsoleRepositoryPort;
 import br.edu.ufabc.rankingJogos.src.core.port.repository.EmpresaRepositoryPort;
 import br.edu.ufabc.rankingJogos.src.core.port.repository.GameRepositoryPort;
@@ -28,6 +29,9 @@ public class GameRepository implements GameRepositoryPort {
 	
 	@Autowired
 	private ConsoleRepositoryPort consoleRepository;
+	
+	@Autowired 
+	AvaliacaoRepositoryPort avaliacaoRepository;
 	
 	@Override
 	public int count() {
@@ -88,7 +92,8 @@ public class GameRepository implements GameRepositoryPort {
 	                                generoRepository.findByGameId(rs.getInt("id")).toArray(g),
 	                                consoleRepository.findByGameId(rs.getInt("id")).toArray(c),
 	                                rs.getString("sinopse"),
-	                                rs.getString("urlFoto")
+	                                rs.getString("urlFoto"),
+	                                avaliacaoRepository.nota(rs.getInt("id"))
 	                        )
 	        );
 	}
@@ -111,7 +116,8 @@ public class GameRepository implements GameRepositoryPort {
                         generoRepository.findByGameId(rs.getInt("id")).toArray(g),
                         consoleRepository.findByGameId(rs.getInt("id")).toArray(c),
                         rs.getString("sinopse"),
-                        rs.getString("urlFoto")
+                        rs.getString("urlFoto"),
+                        avaliacaoRepository.nota(rs.getInt("id"))
                 )
         );
 	}
@@ -133,7 +139,8 @@ public class GameRepository implements GameRepositoryPort {
                         generoRepository.findByGameId(rs.getInt("id")).toArray(g),
                         consoleRepository.findByGameId(rs.getInt("id")).toArray(c),
                         rs.getString("sinopse"),
-                        rs.getString("urlFoto")
+                        rs.getString("urlFoto"),
+                        avaliacaoRepository.nota(rs.getInt("id"))
                 )
         );
 	}

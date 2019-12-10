@@ -38,6 +38,7 @@ public class UsuarioService {
 	}
         
         public int update(Usuario usuario) {
+        	System.out.println(usuario.getSenha());
             return usuarioRepository.update(usuario);
         }
         

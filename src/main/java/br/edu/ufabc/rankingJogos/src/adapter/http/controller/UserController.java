@@ -38,6 +38,7 @@ public class UserController implements UserControllerPort {
         @Override
         @PutMapping
         public int update(Usuario usuario) {
+    	System.out.println("userController"+usuario.getNome());
             return service.update(usuario);
         }
         

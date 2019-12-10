@@ -34,6 +34,7 @@ public class UsuarioRepository implements UsuarioRepositoryPort {
 
 	@Override
 	public int update(Usuario usuario) {
+		System.out.println(usuario.getSenha());
 		byte[] encode = Base64.getEncoder().encode(usuario.getSenha().getBytes());
 		String senha = new String(encode);
             return jdbcTemplate.update(
