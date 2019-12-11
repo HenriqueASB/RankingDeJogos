@@ -2,7 +2,7 @@ USE ranking;
 
 DROP TABLE IF EXISTS user;
 CREATE TABLE user (
-	id int(8) unsigned zerofill NOT NULL AUTO_INCREMENT,
+	id int unsigned NOT NULL AUTO_INCREMENT,
 	nome varchar(45) NOT NULL,
 	email varchar(45) NOT NULL,
 	senha varchar(45) NOT NULL,
@@ -14,7 +14,7 @@ CREATE TABLE user (
 
 DROP TABLE IF EXISTS empresa;
 CREATE TABLE empresa (
-	id int(4) unsigned zerofill NOT NULL AUTO_INCREMENT,
+	id int unsigned  NOT NULL AUTO_INCREMENT,
 	nome varchar(50) NOT NULL,
 	ano varchar(4) NOT NULL,
 	PRIMARY KEY (id),
@@ -24,7 +24,7 @@ CREATE TABLE empresa (
 
 DROP TABLE IF EXISTS genero;
 CREATE TABLE genero (
-	id int(2) unsigned zerofill NOT NULL AUTO_INCREMENT,
+	id int unsigned  NOT NULL AUTO_INCREMENT,
 	genero varchar(30) NOT NULL,
 	PRIMARY KEY (id),
     UNIQUE KEY id_UNIQUE (id),
@@ -33,7 +33,7 @@ CREATE TABLE genero (
 
 DROP TABLE IF EXISTS console;
 CREATE TABLE console (
-	id int(2) unsigned zerofill NOT NULL AUTO_INCREMENT,
+	id int unsigned  NOT NULL AUTO_INCREMENT,
 	nome varchar(30) NOT NULL,
 	fabricante varchar(30),
 	ano varchar(4),
@@ -44,9 +44,9 @@ CREATE TABLE console (
 
 DROP TABLE IF EXISTS jogo;
 CREATE TABLE jogo (
-	id int(6) unsigned zerofill NOT NULL AUTO_INCREMENT,
+	id int unsigned  NOT NULL AUTO_INCREMENT,
 	titulo varchar(50) NOT NULL,
-	empresa_id int(4) unsigned zerofill NOT NULL,
+	empresa_id int unsigned  NOT NULL,
 	sinopse varchar(255) NOT NULL,
 	urlFoto varchar(100) DEFAULT NULL,
 	PRIMARY KEY (id),
@@ -56,22 +56,22 @@ CREATE TABLE jogo (
 
 DROP TABLE IF EXISTS jogo_genero;
 CREATE TABLE jogo_genero (
-	jogo_id int(6) unsigned zerofill NOT NULL,
-	genero_id int(2) unsigned zerofill NOT NULL
+	jogo_id int unsigned  NOT NULL,
+	genero_id int unsigned  NOT NULL
 );
 
 DROP TABLE IF EXISTS jogo_console;
 CREATE TABLE jogo_console (
-	jogo_id int(6) unsigned zerofill NOT NULL,
-	console_id int(2) unsigned zerofill NOT NULL
+	jogo_id int unsigned  NOT NULL,
+	console_id int unsigned  NOT NULL
 );
 
 DROP TABLE IF EXISTS avaliacao;
 CREATE TABLE avaliacao (
-	id int(16) unsigned zerofill NOT NULL AUTO_INCREMENT,
-	user_id int(8) unsigned zerofill NOT NULL,
-	jogo_id int(6) unsigned zerofill NOT NULL,
-	nota int (2) unsigned zerofill NOT NULL,
+	id int unsigned  NOT NULL AUTO_INCREMENT,
+	user_id int unsigned  NOT NULL,
+	jogo_id int unsigned  NOT NULL,
+	nota int  unsigned  NOT NULL,
 	PRIMARY KEY (id),
     UNIQUE KEY id_UNIQUE (id)
 );

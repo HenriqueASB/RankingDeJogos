@@ -39,7 +39,7 @@ INSERT INTO `ranking`.`console`
 `fabricante`,
 `ano`)
 VALUES
-('PC',NULL,NULL),
+('PC','Alan Mathison Turing','1938'),
 ('Atari 2600','Atari','1977'),
 ('Game & Watch','Nintendo','1980'),
 ('NES','Nintendo','1983'),
